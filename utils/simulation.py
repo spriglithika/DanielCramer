@@ -1,7 +1,7 @@
 from . import plotting_utils
 import numpy as np
 from matplotlib import pyplot, animation
-import tqdm
+from tqdm import tqdm
 class BotSimulation:
     def __init__(self, lidar_func, robot_size, odometry_noise, lidar_noise, velocities, num_scans=100):
         self.cast_lidar_rays = lidar_func
