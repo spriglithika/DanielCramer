@@ -1,6 +1,7 @@
 from . import plotting_utils
 import numpy as np
 from matplotlib import pyplot, animation
+import tqdm
 class BotSimulation:
     def __init__(self, lidar_func, robot_size, odometry_noise, lidar_noise, velocities, num_scans=100):
         self.cast_lidar_rays = lidar_func
@@ -138,7 +139,9 @@ class BotSimulation:
     def run_simulation(self):
         all_data= []
          # Iterate through the path and generate data for each timestep
-        for step in range(len(self.path)):
+        pbar = tqdm(range(len(self.path)))
+        pbar.set_description("Generating simulation data")
+        for step in pbar:
             timestep_data = self.generate_timestep(step)
             if timestep_data is None:
                 break
