@@ -1,5 +1,7 @@
 import numpy as np
-def line_intersection(p1, p2, p3, p4):
+def wall_intersection(wall, p1, p2):
+    p3 = wall[0]
+    p4 = wall[1]
     """Find intersection point of two lines defined by points p1, p2 and p3, p4."""
     denom = (p4[1] - p3[1]) * (p2[0] - p1[0]) - (p4[0] - p3[0]) * (p2[1] - p1[1])
     if denom == 0:
@@ -12,8 +14,10 @@ def line_intersection(p1, p2, p3, p4):
         return (p1[0] + ua * (p2[0] - p1[0]), p1[1] + ua * (p2[1] - p1[1]))
     return None
 # Function to find intersection points between a line and a circle
-def circle_line_intersection(center, radius, p1, p2):
+def circle_intersection(circle, p1, p2):
     """Find intersection points between a line defined by points p1, p2 and a circle defined by center and radius."""
+    center = circle['center']
+    radius = circle['radius']
     dx = p2[0] - p1[0]
     dy = p2[1] - p1[1]
     fx = p1[0] - center[0]
